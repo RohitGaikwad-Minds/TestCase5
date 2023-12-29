@@ -1,0 +1,36 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ExistingEmailRegistrationTest {
+    public static void main(String[] args) {
+        // Set the path to your ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path_to_chromedriver.exe");
+
+        // Instantiate ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Navigate to the registration page
+        driver.get("https://automationexercise.com/register");
+
+        // Find registration form elements and fill in the required information, including an existing email
+        WebElement usernameField = driver.findElement(By.id("username"));
+        usernameField.sendKeys("your_username");
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys("your_password");
+
+        WebElement emailField = driver.findElement(By.id("email"));
+        emailField.sendKeys("existing_email@example.com");
+
+        // Submit the form
+        WebElement registerButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        registerButton.click();
+
+        // Optionally, add assertions or check for error messages to verify that the registration was unsuccessful
+
+        // Close the browser
+        driver.quit();
+    }
+}
